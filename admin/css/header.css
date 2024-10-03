@@ -1,0 +1,222 @@
+/* Importing Poppins Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* +++++++++++++++++++++| CSS Reset |++++++++++++++++++ */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* +++++++++++++++++++++| General styles |++++++++++++++++++ */
+body{
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* ||++++++++++++++++ Custom properties ++++++++++++++++|| */ 
+:root{
+    --clr-brand-blue : rgb(0, 116, 217);
+    --clr-brand-black : rgb(58,58,58);
+    font-size: 16px;
+}
+
+/* ||++++++++++++++++ Sidebar styles ++++++++++++++++|| */
+.sidebar{
+    position: fixed;
+    box-shadow: 0 0 2px 0 rgb(49, 49, 49);
+    height: 100%;
+    width: 200px;
+    padding: 1rem 1rem;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+    .sidebar.hidden{
+        transform: translateX(-100%);
+        
+    }
+    .sidebar.hidden~.navbar{
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    .sidebar.hidden ~ .main-content{
+        left: 0;
+        width: 100%;
+    }
+
+.sidebar .sidebar-links-list{
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.sidebar-links-list li{
+    line-height: 40px;
+}
+
+.sidebar-links-list li:last-child a{
+    color: #ff3333;
+}
+    .sidebar-links-list li:last-child a:hover{
+        color:#fff ;
+        background-color: var(--clr-brand-blue);
+    }
+.sidebar-links-list a{
+    text-decoration: none;
+    color: var(--clr-brand-black);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    display: block;
+    width: 100%;
+    padding-left: .2em ;
+    /* height: 100%; */
+    transition:all .3s ease-out;
+}
+    .sidebar-links-list a:hover{
+        color: var(--clr-brand-blue);
+        background-color: rgb(227, 227, 255);
+    }
+
+
+.sidebar-links-list a i{
+    display: inline-block;
+    margin-inline-end: .5rem;
+}
+
+.sidebar-link.active , .sidebar-link.active:hover{
+    background-color: var(--clr-brand-blue);
+    color: white;
+}
+    
+/* ||++++++++++++++++ Navbar styles ++++++++++++++++|| */
+
+.navbar{
+    position: fixed;
+    top:0;
+    left: 200px;
+    width: calc(100% - 200px);
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gainsboro;
+    transition: all .5s ease;
+    z-index: 9999;
+    background-color: #fff;
+}
+
+.navbar .sidebar-toggle:hover{
+    cursor: pointer;
+    color: var(--clr-brand-blue);
+}
+
+.navbar #toggle-icon{
+    font-size: 2rem;
+}
+    
+
+.navbar .profile-section{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+    align-items: center;
+    gap: .5rem;
+}
+
+.navbar .profile-section .profile-info{
+    font-size: 1.2rem;
+}
+
+.navbar .profile-section img{
+    border-radius: 50%;
+    border: 2px solid var(--clr-brand-black);
+}
+
+.navbar .profile-section .profile-info span:first-child{
+    color: var(--clr-brand-black);
+}
+
+.navbar .profile-section .profile-info span:last-child{
+    color: black;
+    font-weight: 600;
+}
+
+/* ++++++++++++++++++++|Navbar Dropdown styles|+++++++++++++++++++++ */
+
+.sidebar-links-list .sidebar-bikes-dropdown-menu{
+    position: absolute;
+    top: 0;
+    left: 150px;
+    width:max-content;
+    list-style-type: none;
+    display: none;
+    margin: 0 1rem;
+    background: #fff;
+    box-shadow: 0 0 2px 0 rgb(49, 49, 49);
+    z-index: 10000;
+    border-radius: 5px;
+}
+
+.sidebar-bikes-dropdown-menu li a{
+    padding: 0 1rem;
+}
+
+.sidebar-links-list .sidebar-bikes-dropdown-li{
+    position: relative;
+    
+}
+    .sidebar-bikes-dropdown-li:hover .sidebar-bikes-dropdown-menu{
+        display:initial;
+    }
+
+/*+++++++++++++++++++++++++++|main content|+++++++++++++++++++++++++++++++++*/
+.main-content{
+    position: relative;
+    width: calc(100% - 200px);
+    left: 200px;
+    top: 4.1rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+/*+++++++++++++++++++++++++x+++++++++++|Media Queries|++++++++++++++++++++++++++++++++++++++++*/
+@media all and (max-width: 576px){
+    .navbar .profile-section .profile-info{
+        display: none;
+    }
+
+    .sidebar{
+        width: 92px;
+    }
+        .sidebar.hidden ~.main-content{
+            width: 100%;
+        }
+
+    .sidebar-link{
+        display: block;
+        text-align: center;
+    }
+
+    .sidebar-link i{
+        font-size: 1.5rem;
+    }
+
+    .sidebar-link-text{
+        display: none;
+    }
+
+    .navbar{
+        position: fixed;
+        left: 92px;
+        box-shadow: 0 0 5px 0 red;
+        width: calc(100% - 92px);
+    }
+
+    .main-content{
+        left: 92px;
+        width: calc(100% - 92px);
+        border: 1px solid red;
+    }
+    
+
+}
